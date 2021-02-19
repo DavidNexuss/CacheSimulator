@@ -8,9 +8,9 @@ class Cache
     int hitCount = 0;
     int lookupCount = 0;
 
-    public:
-
     virtual bool i_lookup(int block) = 0;
+
+    public:
     virtual void print() = 0;
 
     bool lookup(int block)
@@ -30,14 +30,12 @@ class NWayCache : public Cache
     int size;
     int ways;
 
-    public:
-    NWayCache(int _size,int _ways) : size(_size),ways(_ways),cache(_size) { }
-
     void insert(int block)
     {
         if(cache[block % size].size() == ways) cache[block % size].pop_back();
         cache[block % size].push_front(block);
     }
+
     virtual bool i_lookup(int block) override
     {
         int idx = block % size;
@@ -53,6 +51,9 @@ class NWayCache : public Cache
         insert(block);
         return false;
     }
+
+    public:
+    NWayCache(int _size,int _ways) : size(_size),ways(_ways),cache(_size) { }
 
     virtual void print() override
     {
@@ -76,8 +77,6 @@ class VictimCache : public Cache
     int size;
     int victim_size;
 
-    public:
-    VictimCache(int _size,int _victim_size) : size(_size), victim_size(_victim_size), cache(_size,-1) { }
 
     void push_victim(int block)
     {
@@ -105,6 +104,9 @@ class VictimCache : public Cache
         push_victim(block);
         return false;
     }
+
+    public:
+    VictimCache(int _size,int _victim_size) : size(_size), victim_size(_victim_size), cache(_size,-1) { }
 
     virtual void print() override
     {

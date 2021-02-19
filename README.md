@@ -1,9 +1,9 @@
 # A simple LRU N way and victim cache simulator
 
-This utility allows you to emulate the behavior of either an lru cache or a victim cache.
+This utility allows you to simulate the behavior of either an lru cache or a victim cache.
 Useful for doing ec and ac homework.
 
-Cache hits is printed to stdout, additional information is printed to stderr.
+Cache hits are printed to stdout, additional information is printed to stderr.
 Compile with make
 
 Expected input:
