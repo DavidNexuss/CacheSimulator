@@ -55,6 +55,9 @@ class NWayCache : public Cache
     public:
     NWayCache(int _size,int _ways) : size(_size),ways(_ways),cache(_size) { }
 
+
+    //El orden en el que se imprimen las columnas de la cache de N vias no representa cada una de las vias,
+    //sino los valores de cada via ordenados en el orden en el que se eliminarian en caso de nueva insercion.
     virtual void print() override
     {
         cerr << "=================================" << endl;
