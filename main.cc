@@ -1,4 +1,8 @@
 #include "cache.h"
+#include <iostream>
+#include <vector>
+#include <list>
+using namespace std;
 bool silent;
 
 void simulate(Cache* cache)
